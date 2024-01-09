@@ -19,7 +19,7 @@ export class CycloidGraphComponent {
         }
         ],
     layout: {
-      title: 'Quadratic Function: y = x^2',
+      title: 'Cycloids',
       xaxis: {
         title: 'X Axis'
       },
@@ -32,7 +32,8 @@ export class CycloidGraphComponent {
   };
 
   constructor() {
-    this.generateQuadraticData();
+    // this.generateQuadraticData();
+    this.generateCycloidData();
   }
 
   generateQuadraticData() {
@@ -45,4 +46,23 @@ export class CycloidGraphComponent {
     this.graph.data[0].x = xValues;
     this.graph.data[0].y = yValues;
   }
+
+  generateCycloidData() {
+    const xValues = [];
+    const yValues = [];
+    const r = 1;
+    const numPoints = 100;
+  
+    for (let t = 0; t <= 4 * Math.PI; t += (2 * Math.PI) / numPoints) {
+      const x = r * (t - Math.sin(t));
+      const y = r * (1 - Math.cos(t));
+      xValues.push(x);
+      yValues.push(y);
+    }
+  
+    this.graph.data[0].x = xValues;
+    this.graph.data[0].y = yValues;
+  }
+  
+
 }
