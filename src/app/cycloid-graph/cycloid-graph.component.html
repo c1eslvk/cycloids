@@ -1,4 +1,13 @@
 <div class="graph-container">
-    <plotly-plot [data]="graph.data" [layout]="graph.layout"></plotly-plot>
-  </div>
+  <plotly-plot [data]="graph.data" [layout]="graph.layout" [config]="graph.config"></plotly-plot>
+
+  <mat-slider min="0" max="10" step="1">
+    <input matSliderThumb [(ngModel)]="rValue" (input)="onSliderChange()">
+  </mat-slider>
+  <br>
+  <label>Selected slider value is {{ rValue }}</label>
+
+</div>
+
+
   

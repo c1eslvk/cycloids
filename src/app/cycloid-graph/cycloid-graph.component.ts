@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-cycloid-graph',
   templateUrl: './cycloid-graph.component.html',
   styleUrls: ['./cycloid-graph.component.css'],
-  template: '<plotly-plot [data]="graph.data" [layout]="graph.layout"></plotly-plot>'
+  template: '<plotly-plot [data]="graph.data" [layout]="graph.layout [config]="graph.config""></plotly-plot>'
 })
 export class CycloidGraphComponent {
   public graph = {
@@ -21,36 +21,32 @@ export class CycloidGraphComponent {
     layout: {
       title: 'Cycloids',
       xaxis: {
-        title: 'X Axis'
+        title: 'X Axis',
+        tickvals: [0, Math.PI / 2, Math.PI, (3 * Math.PI) / 2, 2 * Math.PI, (5 * Math.PI)/2, 3 * Math.PI, (7 * Math.PI)/2, 4 * Math.PI],
+        ticktext: ['0', 'π/2', 'π', '3π/2', '2π', '5π/2', '3π', '7π/2', '4π']
       },
       yaxis: {
         title: 'Y Axis'
       },
-      height: 700,
-      width: 700,
+      height:500,
+      width: 1000,
+      dragmode: 'pan'
+    },
+    config: {
+      scrollZoom: true,
+      modeBarButtonsToRemove: ['zoom', 'zoomIn', 'zoomOut']
     }
   };
 
+  rValue = 1;
+
   constructor() {
-    // this.generateQuadraticData();
-    this.generateCycloidData();
+    this.generateCycloidData(this.rValue);
   }
 
-  generateQuadraticData() {
+  generateCycloidData(r: number) {
     const xValues = [];
     const yValues = [];
-    for (let x = -20; x <= 20; x += 0.1) {
-      xValues.push(x);
-      yValues.push(Math.pow(x, 2)); // Calculate y = x^2 for each x value
-    }
-    this.graph.data[0].x = xValues;
-    this.graph.data[0].y = yValues;
-  }
-
-  generateCycloidData() {
-    const xValues = [];
-    const yValues = [];
-    const r = 1;
     const numPoints = 100;
   
     for (let t = 0; t <= 4 * Math.PI; t += (2 * Math.PI) / numPoints) {
@@ -63,6 +59,8 @@ export class CycloidGraphComponent {
     this.graph.data[0].x = xValues;
     this.graph.data[0].y = yValues;
   }
-  
 
+  onSliderChange() {
+    this.generateCycloidData(this.rValue);
+  }
 }

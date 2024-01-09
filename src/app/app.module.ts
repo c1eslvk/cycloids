@@ -8,6 +8,9 @@ import * as PlotlyJS from 'plotly.js-dist-min';
 import { PlotlyModule } from 'angular-plotly.js';
 import { CycloidGraphComponent } from './cycloid-graph/cycloid-graph.component';
 
+import { MatSliderModule } from '@angular/material/slider';
+import { FormsModule } from '@angular/forms';
+
 PlotlyModule.plotlyjs = PlotlyJS;
 
 @NgModule({
@@ -17,8 +20,10 @@ PlotlyModule.plotlyjs = PlotlyJS;
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
-    PlotlyModule
+    PlotlyModule,
+    MatSliderModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
