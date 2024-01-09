@@ -7,6 +7,9 @@ import { Component } from '@angular/core';
   template: '<plotly-plot [data]="graph.data" [layout]="graph.layout [config]="graph.config""></plotly-plot>'
 })
 export class CycloidGraphComponent {
+  rValue = 1;
+  maxXMultiplier = 2;
+
   public graph = {
     data: [
         {
@@ -22,34 +25,54 @@ export class CycloidGraphComponent {
       title: 'Cycloids',
       xaxis: {
         title: 'X Axis',
-        tickvals: [0, Math.PI / 2, Math.PI, (3 * Math.PI) / 2, 2 * Math.PI, (5 * Math.PI)/2, 3 * Math.PI, (7 * Math.PI)/2, 4 * Math.PI],
-        ticktext: ['0', 'π/2', 'π', '3π/2', '2π', '5π/2', '3π', '7π/2', '4π']
+        tickmode: "linear",
+        tick0: 0,
+        dtick: Math.PI / 2,
       },
       yaxis: {
         title: 'Y Axis'
       },
       height:500,
       width: 1000,
-      dragmode: 'pan'
+      dragmode: 'pan',
+      shapes: [
+        {
+          type: 'circle',
+          xref: 'x',
+          yref: 'y',
+          x0: (this.maxXMultiplier * Math.PI) - this.rValue,
+          y0: 0,
+          x1: (this.maxXMultiplier * Math.PI) + this.rValue,
+          y1: this.rValue * 2,
+          line: {
+            color: 'blue'
+          }
+        },
+        {
+          type: 'line',
+          x0: this.rValue * ((this.maxXMultiplier * Math.PI) - Math.sin(this.maxXMultiplier * Math.PI)),
+          y0: this.rValue * (1 - Math.cos(this.maxXMultiplier * Math.PI)),
+          x1: this.maxXMultiplier * Math.PI,
+          y1: this.rValue,
+        }
+      ]
     },
     config: {
       scrollZoom: true,
       modeBarButtonsToRemove: ['zoom', 'zoomIn', 'zoomOut']
-    }
+    },
   };
 
-  rValue = 1;
-
   constructor() {
-    this.generateCycloidData(this.rValue);
+    this.generateCycloidData(this.rValue, this.maxXMultiplier);
   }
 
-  generateCycloidData(r: number) {
+  generateCycloidData(r: number, maxXValue: number) {
     const xValues = [];
     const yValues = [];
     const numPoints = 100;
   
-    for (let t = 0; t <= 4 * Math.PI; t += (2 * Math.PI) / numPoints) {
+    for (let t = 0; t <= maxXValue * Math.PI; t += (2 * Math.PI) / numPoints) {
       const x = r * (t - Math.sin(t));
       const y = r * (1 - Math.cos(t));
       xValues.push(x);
@@ -58,9 +81,35 @@ export class CycloidGraphComponent {
   
     this.graph.data[0].x = xValues;
     this.graph.data[0].y = yValues;
+
+    this.updateShapes(this.rValue, this.maxXMultiplier);
   }
 
   onSliderChange() {
-    this.generateCycloidData(this.rValue);
+    this.generateCycloidData(this.rValue, this.maxXMultiplier);
+  }
+
+  updateShapes(r: number, maxXValue: number) {
+    this.graph.layout.shapes = [
+      {
+        type: 'circle',
+        xref: 'x',
+        yref: 'y',
+        x0: (maxXValue * Math.PI) - r,
+        y0: 0,
+        x1: (maxXValue * Math.PI) + r,
+        y1: r * 2,
+        line: {
+          color: 'blue'
+        }
+      },
+      {
+        type: 'line',
+        x0: this.rValue * ((this.maxXMultiplier * Math.PI) - Math.sin(this.maxXMultiplier * Math.PI)),
+        y0: this.rValue * (1 - Math.cos(this.maxXMultiplier * Math.PI)),
+        x1: this.maxXMultiplier * Math.PI,
+        y1: this.rValue,
+      }
+    ];
   }
 }

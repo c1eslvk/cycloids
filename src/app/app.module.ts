@@ -10,6 +10,7 @@ import { CycloidGraphComponent } from './cycloid-graph/cycloid-graph.component';
 
 import { MatSliderModule } from '@angular/material/slider';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 PlotlyModule.plotlyjs = PlotlyJS;
 
@@ -24,6 +25,7 @@ PlotlyModule.plotlyjs = PlotlyJS;
     AppRoutingModule,
     PlotlyModule,
     MatSliderModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
