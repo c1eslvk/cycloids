@@ -50,7 +50,7 @@ export class CycloidGraphComponent {
           x1: (this.maxXMultiplier * Math.PI) + this.rValue,
           y1: this.rValue * 2,
           line: {
-            color: 'blue'
+            color: 'black'
           }
         },
         {
@@ -59,6 +59,35 @@ export class CycloidGraphComponent {
           y0: this.rValue * (1 - Math.cos(this.maxXMultiplier * Math.PI)),
           x1: this.maxXMultiplier * Math.PI,
           y1: this.rValue,
+          line: {
+            color: 'red'
+          },
+        },
+        {
+          type: 'circle',
+          fillcolor: 'red',
+          xref: 'x',
+          yref: 'y',
+          x0: this.rValue * ((this.maxXMultiplier * Math.PI) - Math.sin(this.maxXMultiplier * Math.PI)) + 0.2,
+          y0: this.rValue * (1 - Math.cos(this.maxXMultiplier * Math.PI)) + 0.2,
+          x1: this.rValue * ((this.maxXMultiplier * Math.PI) - Math.sin(this.maxXMultiplier * Math.PI)) - 0.2,
+          y1: this.rValue * (1 - Math.cos(this.maxXMultiplier * Math.PI)) - 0.2,
+          line: {
+            color: 'red'
+          }
+        },
+        {
+          type: 'circle',
+          fillcolor: 'red',
+          xref: 'x',
+          yref: 'y',
+          x0: this.maxXMultiplier * Math.PI + 0.04,
+          y0: this.rValue + 0.04,
+          x1: this.maxXMultiplier * Math.PI - 0.04,
+          y1: this.rValue - 0.04,
+          line: {
+            color: 'red'
+          }
         }
       ]
     },
@@ -105,7 +134,7 @@ export class CycloidGraphComponent {
         x1: (maxXValue * Math.PI) + r,
         y1: r * 2,
         line: {
-          color: 'blue'
+          color: 'black'
         }
       },
       {
@@ -114,7 +143,36 @@ export class CycloidGraphComponent {
         y0: this.rValue * (1 - Math.cos(this.maxXMultiplier * Math.PI)),
         x1: this.maxXMultiplier * Math.PI,
         y1: this.rValue,
-      }
+        line: {
+          color: 'red'
+        },
+      },
+      {
+        type: 'circle',
+        fillcolor: 'red',
+        xref: 'x',
+        yref: 'y',
+        x0: this.rValue * ((this.maxXMultiplier * Math.PI) - Math.sin(this.maxXMultiplier * Math.PI)) + 0.04,
+        y0: this.rValue * (1 - Math.cos(this.maxXMultiplier * Math.PI)) + 0.04,
+        x1: this.rValue * ((this.maxXMultiplier * Math.PI) - Math.sin(this.maxXMultiplier * Math.PI)) - 0.04,
+        y1: this.rValue * (1 - Math.cos(this.maxXMultiplier * Math.PI)) - 0.04,
+        line: {
+          color: 'red'
+        }
+      },
+      {
+          type: 'circle',
+          fillcolor: 'red',
+          xref: 'x',
+          yref: 'y',
+          x0: this.maxXMultiplier * Math.PI + 0.04,
+          y0: this.rValue + 0.04,
+          x1: this.maxXMultiplier * Math.PI - 0.04,
+          y1: this.rValue - 0.04,
+          line: {
+            color: 'red'
+          }
+        }
     ];
   }
 }
