@@ -18,7 +18,7 @@ export class CycloidGraphComponent {
           type: 'scatter',
           marker: {color: 'blue'},
           mode: 'lines',
-          name: 'y = x^2'
+          name: 'cycloid'
         }
         ],
     layout: {
@@ -28,9 +28,14 @@ export class CycloidGraphComponent {
         tickmode: "linear",
         tick0: 0,
         dtick: Math.PI / 2,
+        autorange: false,
+        range: [0, 5],
+        scaleanchor: 'y',
       },
       yaxis: {
-        title: 'Y Axis'
+        title: 'Y Axis',
+        autorange: false,
+        range: [0, 5],
       },
       height:500,
       width: 1000,
