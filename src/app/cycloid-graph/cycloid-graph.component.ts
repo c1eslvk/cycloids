@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 })
 export class CycloidGraphComponent {
   rValue = 1;
-  maxXMultiplier = 2;
+  tValue = 2;
 
   public graph = {
     data: [
@@ -45,9 +45,9 @@ export class CycloidGraphComponent {
           type: 'circle',
           xref: 'x',
           yref: 'y',
-          x0: (this.maxXMultiplier * Math.PI),
+          x0: (this.tValue * Math.PI),
           y0: 0,
-          x1: (this.maxXMultiplier * Math.PI) + 2 * this.rValue,
+          x1: (this.tValue * Math.PI) + 2 * this.rValue,
           y1: this.rValue * 2,
           line: {
             color: 'black'
@@ -55,9 +55,9 @@ export class CycloidGraphComponent {
         },
         {
           type: 'line',
-          x0: this.rValue * ((this.maxXMultiplier * Math.PI) - Math.sin(this.maxXMultiplier * Math.PI)),
-          y0: this.rValue * (1 - Math.cos(this.maxXMultiplier * Math.PI)),
-          x1: this.maxXMultiplier * Math.PI,
+          x0: this.rValue * ((this.tValue * Math.PI) - Math.sin(this.tValue * Math.PI)),
+          y0: this.rValue * (1 - Math.cos(this.tValue * Math.PI)),
+          x1: this.tValue * Math.PI,
           y1: this.rValue,
           line: {
             color: 'red'
@@ -68,10 +68,10 @@ export class CycloidGraphComponent {
           fillcolor: 'red',
           xref: 'x',
           yref: 'y',
-          x0: this.rValue * ((this.maxXMultiplier * Math.PI) - Math.sin(this.maxXMultiplier * Math.PI)) + 0.2,
-          y0: this.rValue * (1 - Math.cos(this.maxXMultiplier * Math.PI)) + 0.2,
-          x1: this.rValue * ((this.maxXMultiplier * Math.PI) - Math.sin(this.maxXMultiplier * Math.PI)) - 0.2,
-          y1: this.rValue * (1 - Math.cos(this.maxXMultiplier * Math.PI)) - 0.2,
+          x0: this.rValue * ((this.tValue * Math.PI) - Math.sin(this.tValue * Math.PI)) + (0.4 * this.rValue),
+          y0: this.rValue * (1 - Math.cos(this.tValue * Math.PI)) + (0.4 * this.rValue),
+          x1: this.rValue * ((this.tValue * Math.PI) - Math.sin(this.tValue * Math.PI)) - (0.4 * this.rValue),
+          y1: this.rValue * (1 - Math.cos(this.tValue * Math.PI)) - (0.4 * this.rValue),
           line: {
             color: 'red'
           }
@@ -81,9 +81,9 @@ export class CycloidGraphComponent {
           fillcolor: 'red',
           xref: 'x',
           yref: 'y',
-          x0: this.maxXMultiplier * Math.PI + 0.04,
+          x0: this.tValue * Math.PI + 0.04,
           y0: this.rValue + 0.04,
-          x1: this.maxXMultiplier * Math.PI - 0.04,
+          x1: this.tValue * Math.PI - 0.04,
           y1: this.rValue - 0.04,
           line: {
             color: 'red'
@@ -98,7 +98,7 @@ export class CycloidGraphComponent {
   };
 
   constructor() {
-    this.generateCycloidData(this.rValue, this.maxXMultiplier);
+    this.generateCycloidData(this.rValue, this.tValue);
   }
 
   generateCycloidData(r: number, maxXValue: number) {
@@ -120,18 +120,18 @@ export class CycloidGraphComponent {
   }
 
   onSliderChange() {
-    this.generateCycloidData(this.rValue, this.maxXMultiplier);
+    this.generateCycloidData(this.rValue, this.tValue);
   }
 
-  updateShapes(r: number, maxXValue: number) {
+  updateShapes(r: number, t: number) {
     this.graph.layout.shapes = [
       {
         type: 'circle',
         xref: 'x',
         yref: 'y',
-        x0: (r * maxXValue * Math.PI) - r,
+        x0: (r * t * Math.PI) - r,
         y0: 0,
-        x1: (r * maxXValue * Math.PI) + r,
+        x1: (r * t * Math.PI) + r,
         y1: r * 2,
         line: {
           color: 'black'
@@ -139,10 +139,10 @@ export class CycloidGraphComponent {
       },
       {
         type: 'line',
-        x0: this.rValue * ((this.maxXMultiplier * Math.PI) - Math.sin(this.maxXMultiplier * Math.PI)),
-        y0: this.rValue * (1 - Math.cos(this.maxXMultiplier * Math.PI)),
-        x1: r * this.maxXMultiplier * Math.PI,
-        y1: this.rValue,
+        x0: r * ((t * Math.PI) - Math.sin(t * Math.PI)),
+        y0: r * (1 - Math.cos(t * Math.PI)),
+        x1: r * t * Math.PI,
+        y1: r,
         line: {
           color: 'red'
         },
@@ -152,10 +152,10 @@ export class CycloidGraphComponent {
         fillcolor: 'red',
         xref: 'x',
         yref: 'y',
-        x0: this.rValue * ((this.maxXMultiplier * Math.PI) - Math.sin(this.maxXMultiplier * Math.PI)) + 0.04,
-        y0: this.rValue * (1 - Math.cos(this.maxXMultiplier * Math.PI)) + 0.04,
-        x1: this.rValue * ((this.maxXMultiplier * Math.PI) - Math.sin(this.maxXMultiplier * Math.PI)) - 0.04,
-        y1: this.rValue * (1 - Math.cos(this.maxXMultiplier * Math.PI)) - 0.04,
+        x0: r * ((t * Math.PI) - Math.sin(t * Math.PI)) + (0.05 * r),
+        y0: r * (1 - Math.cos(t * Math.PI)) + (0.05 * r),
+        x1: r * ((t * Math.PI) - Math.sin(t * Math.PI)) - (0.05 * r),
+        y1: r * (1 - Math.cos(t * Math.PI)) - (0.05 * r),
         line: {
           color: 'red'
         }
@@ -165,10 +165,10 @@ export class CycloidGraphComponent {
           fillcolor: 'red',
           xref: 'x',
           yref: 'y',
-          x0: r * this.maxXMultiplier * Math.PI + 0.04,
-          y0: this.rValue + 0.04,
-          x1: r * this.maxXMultiplier * Math.PI - 0.04,
-          y1: this.rValue - 0.04,
+          x0: r * t * Math.PI + (0.05 * r),
+          y0: r + (0.05 * r),
+          x1: r * t * Math.PI - (0.05 * r),
+          y1: r - (0.05 * r),
           line: {
             color: 'red'
           }
