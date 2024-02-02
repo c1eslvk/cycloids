@@ -1,3 +1,8 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+
 .graph-container {
   max-width: 1000px;
   margin: 0 auto;
@@ -8,7 +13,19 @@
 }
 
 .slider-container {
-  max-width: 1000px;
-  margin: 0 auto;
+  max-width: 500px; 
+  margin: 0 10px; 
 }
-  
+
+.mat-accent .mat-slider-track-fill {
+  background-color: red !important;
+}
+
+.mat-slider-thumb-label {
+  background-color: red !important;
+
+}
+
+.mat-slider-thumb {
+  background-color: red !important;
+}

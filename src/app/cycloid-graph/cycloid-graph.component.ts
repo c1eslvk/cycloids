@@ -22,7 +22,6 @@ export class CycloidGraphComponent {
         }
         ],
     layout: {
-      title: 'Cycloids',
       xaxis: {
         title: 'X Axis',
         tickmode: "linear",

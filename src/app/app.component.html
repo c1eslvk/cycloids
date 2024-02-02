@@ -1,1 +1,32 @@
+<app-navbar></app-navbar>
+
 <app-cycloid-graph></app-cycloid-graph>
+<br>
+
+<div class="container">
+    <div class="definition">
+        <p class="title">Definition</p>
+        <p>A <span class="variable">cycloid</span> is the curve traced out by a point on a circle as it rolls along a flat surface. Above, animating the graph will show the point on the wheel as the wheel rolls along the x-axis. If you increase the maximum for <span class="variable">t</span>, then you can make it go further than a single rotation. What happens if we do two full rotations? Adjust the maximum to <span class="variable">4π</span> and animate.</p>
+    </div>
+    
+    <div class="derivation">
+        <p class="title">Derivation of Equations</p>
+        <p>Where do the equations come from? First consider the circle with radius 1.</p>
+        <p>First, pay attention to the point <span class="variable">P</span> as it goes around the circle. It starts at the bottom of the circle and moves in the clockwise direction. In particular, the x-coordinate starts at 0, goes to the left (negative) and then to the right (positive), returning to 0. This matches the equation <span class="equation">x(t) = -sin(t)</span> y-coordinate starts at the minimum value, which matches with <span class="equation">y(t) = -cos(t)</span>.</p>
+    
+        <p>So the parametric equations for a point starting at the bottom of a circle and moving clockwise are:</p>
+        <p><span class="equation">x(t) = -sin(t)</span></p>
+        <p><span class="equation">y(t) = -cos(t)</span></p>
+    
+        <p>But, we can see that the circle is also moving. First, we need to translate it up one unit by adding 1 to <span class="equation">y(t)</span>. Also, it needs to be translated horizontally by a variable amount. To see how the translation relates the circle, click the checkbox for "Show Circumference" and watch how the circumference of the circle relates to the horizontal translation. When the point on the wheel has returned to the bottom (when <span class="variable">t=2π</span>), the circle has completed one full rotation. Horizontally, the center has moved <span class="variable">2π</span> units to the right. This is the same as the value of <span class="variable">t</span>, so we just need to add <span class="variable">t</span> to <span class="equation">x(t)</span>.</p>
+    
+        <p>So the equations for the cycloid when the radius is 1 are:</p>
+        <p><span class="equation">x(t) = -sin(t) + t</span></p>
+        <p><span class="equation">y(t) = -cos(t) + 1</span></p>
+    
+        <p>If we change the radius to <span class="variable">r</span> in general, then we would need to adjust our equations for the circle by adding a coefficient of <span class="variable">r</span> to each of the trigonometric functions. For the translations, now we need to translate the circle up by <span class="variable">r</span> units. Horizontally, the wheel will complete one full rotation when the horizontal distance it has moved is the same as the circumference, or <span class="variable">2πr</span>. This will still happen when <span class="variable">t=2π</span>, so we want a horizontal translation now of <span class="variable">rt</span>. Our general equations are:</p>
+        <p><span class="equation">x(t) = -rsin(t) + rt</span></p>
+        <p><span class="equation">y(t) = rcos(t) + r</span></p>
+    </div>
+    <br>
+</div>

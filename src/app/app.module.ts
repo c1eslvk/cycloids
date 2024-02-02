@@ -11,13 +11,15 @@ import { CycloidGraphComponent } from './cycloid-graph/cycloid-graph.component';
 import { MatSliderModule } from '@angular/material/slider';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NavbarComponent } from './navbar/navbar.component';
 
 PlotlyModule.plotlyjs = PlotlyJS;
 
 @NgModule({
   declarations: [
     AppComponent,
-    CycloidGraphComponent
+    CycloidGraphComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

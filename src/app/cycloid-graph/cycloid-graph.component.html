@@ -1,18 +1,21 @@
 <div class="graph-container">
   <plotly-plot [data]="graph.data" [layout]="graph.layout" [config]="graph.config"></plotly-plot>
-
-  <label>Selected slider value is {{ rValue }}</label>
-  <br>
-  <mat-slider min="0" max="10" step="1">
-    <input matSliderThumb [(ngModel)]="rValue" (input)="onSliderChange()">
-  </mat-slider>
-  <br>
-  <label>Selected slider value is {{tValue}}π</label>
-  <br>
-  <mat-slider min="0" max="10" step="0.1">
-    <input matSliderThumb [(ngModel)]="tValue" (input)="onSliderChange()">
-  </mat-slider>
 </div>
 
+<div class="container">
+  <div class="slider-container">
+    <label>r = {{ rValue }}</label>
+    <br>
+    <mat-slider min="0" max="10" step="1" color="primary">
+      <input matSliderThumb [(ngModel)]="rValue" (input)="onSliderChange()">
+    </mat-slider>
+  </div>
 
-  
+  <div class="slider-container">
+    <label>t = {{tValue}}π</label>
+    <br>
+    <mat-slider min="0" max="10" step="0.1" color="primary">
+      <input matSliderThumb [(ngModel)]="tValue" (input)="onSliderChange()">
+    </mat-slider>
+  </div>
+</div>

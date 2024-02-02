@@ -1,0 +1,31 @@
+.container {
+    width: 1000px;
+    margin-bottom: 30px;
+    margin: 0 auto;
+}
+
+.definition,
+.derivation {
+    margin-bottom: 20px;
+}
+
+.definition p,
+.derivation p {
+    font-style: italic;
+}
+
+.definition .variable,
+.derivation .variable {
+    font-style: italic;
+    font-weight: bold;
+}
+
+.definition .equation,
+.derivation .equation {
+    font-style: italic;
+    font-weight: bold;
+}
+
+.title {
+    font-size: 20px;
+}
